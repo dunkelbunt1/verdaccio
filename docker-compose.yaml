@@ -1,4 +1,4 @@
-version: '2.1'
+version: '3'
 services:
   verdaccio:
     build: .
@@ -9,6 +9,12 @@ services:
       - $PORT:$PORT
     volumes:
        - verdaccio:/verdaccio
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports: 
+    - 4087:443
+    restart: always
 volumes:
   verdaccio:
     driver: local

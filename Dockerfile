@@ -1,11 +1,12 @@
 FROM node:10.3-alpine
 LABEL maintainer="https://github.com/verdaccio/verdaccio"
-
+RUN apk upgrade && \
+    apk update
 RUN apk --no-cache add openssl && \
     wget -O /usr/local/bin/dumb-init https://github.com/Yelp/dumb-init/releases/download/v1.2.0/dumb-init_1.2.0_amd64 && \
     chmod +x /usr/local/bin/dumb-init && \
     apk del openssl && \
-    apk add bash-completion && \
+    apk add bash  && \
     apk --no-cache add ca-certificates wget && \
     wget -q -O /etc/apk/keys/sgerrand.rsa.pub https://raw.githubusercontent.com/sgerrand/alpine-pkg-glibc/master/sgerrand.rsa.pub && \
     wget https://github.com/sgerrand/alpine-pkg-glibc/releases/download/2.25-r0/glibc-2.25-r0.apk && \
