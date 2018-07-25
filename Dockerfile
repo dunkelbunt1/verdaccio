@@ -25,7 +25,8 @@ RUN npm config set registry http://registry.npmjs.org/ && \
     yarn code:docker-build && \
     yarn build:webui && \
     yarn cache clean && \
-    yarn install --production=true --pure-lockfile
+    npm i verdaccio-ldap &&  \
+    yarn install --production=true --pure-lockfile 
 
 RUN mkdir -p /verdaccio/storage /verdaccio/plugins /verdaccio/conf
 
